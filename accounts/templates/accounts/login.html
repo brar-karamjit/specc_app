@@ -1,0 +1,29 @@
+{% extends "core/base.html" %}
+{% load socialaccount %}
+
+{% block title %}Log In — Specc{% endblock %}
+
+{% block content %}
+{% provider_login_url 'google' as default_google_login %}
+{% provider_login_url 'google' process='signup' as default_google_signup %}
+<section class="section form-section">
+    <div class="auth-panel">
+        <div class="auth-panel__intro">
+            <p class="eyebrow">Welcome back</p>
+            <h2>Log into Specc</h2>
+            <p class="auth-panel__lede">Authenticate with Google to keep your studio pipeline, briefs, and launches perfectly in sync.</p>
+        </div>
+
+        <div class="card form-card">
+            <div class="oauth-card">
+                <p class="oauth-card__label">Continue with</p>
+                <a class="oauth-button" href="{{ google_login_url|default:default_google_login }}">
+                    <span class="oauth-button__icon" aria-hidden="true">G</span>
+                    <span>Google Workspace</span>
+                </a>
+            </div>
+            <p class="muted-link">Don't have an account? <a href="{{ google_signup_url|default:default_google_signup }}">Sign up</a></p>
+        </div>
+    </div>
+</section>
+{% endblock %}

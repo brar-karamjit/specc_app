@@ -8,4 +8,4 @@ def home(request):
     context = {
         "current_year": datetime.utcnow().year,
     }
-    return render(request, "specc_site/home.html", context)
+    return render(request, "core/home.html", context)

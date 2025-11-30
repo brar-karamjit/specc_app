@@ -1,0 +1,98 @@
+{% extends "core/base.html" %}
+
+{% block title %}Specc — Digital Studio{% endblock %}
+
+{% block content %}
+<section class="hero card">
+    <p class="eyebrow">Web development studio</p>
+    <h1 class="hero-title">Simple, fast, thoughtful sites for teams that need momentum.</h1>
+    <p class="hero-copy">
+        Specc is a small web development agency focused on honest collaboration, practical strategy, and clean execution.
+        We help founders and marketing teams launch sites that are easy to maintain and pleasant to use.
+    </p>
+    <div class="hero__actions">
+        <a class="btn btn--primary" href="mailto:hello@specc.studio">Start a project</a>
+        <a class="btn btn--ghost" href="#work">View work</a>
+    </div>
+    <ul class="hero__stats">
+        <li>
+            <strong>120+</strong>
+            <span>Projects shipped</span>
+        </li>
+        <li>
+            <strong>10 days</strong>
+            <span>Average sprint</span>
+        </li>
+        <li>
+            <strong>98%</strong>
+            <span>Client satisfaction</span>
+        </li>
+    </ul>
+</section>
+
+<section class="section" id="services">
+    <div class="section__header">
+        <p class="eyebrow">What we do</p>
+        <h2>Clear deliverables, dependable handoff.</h2>
+    </div>
+    <div class="cards">
+        <article class="card">
+            <h3>Strategy &amp; planning</h3>
+            <p>Roadmaps, tech audits, and content outlines that remove guesswork for every launch.</p>
+        </article>
+        <article class="card">
+            <h3>Design systems</h3>
+            <p>Simple component libraries that keep marketing pages and product UI consistent.</p>
+        </article>
+        <article class="card">
+            <h3>Full-stack builds</h3>
+            <p>Modern stacks (Next.js, Django, Shopify) tuned for performance, accessibility, and SEO.</p>
+        </article>
+    </div>
+</section>
+
+<section class="section section--muted" id="work">
+    <div class="section__header">
+        <p class="eyebrow">Selected work</p>
+        <h2>Recent engagements</h2>
+    </div>
+    <ul class="list">
+        <li>
+            <div>
+                <strong>Northwind Supply</strong>
+                <p>E-commerce rebuild that reduced load times to 1.1s.</p>
+            </div>
+            <span>Shopify + Hydrogen</span>
+        </li>
+        <li>
+            <div>
+                <strong>LoopFlow</strong>
+                <p>Marketing site + docs hub powered by Next.js and MDX.</p>
+            </div>
+            <span>Next.js</span>
+        </li>
+        <li>
+            <div>
+                <strong>Climate Now</strong>
+                <p>Storytelling microsite with donation flows and CMS.</p>
+            </div>
+            <span>Wagtail</span>
+        </li>
+    </ul>
+</section>
+
+<section class="section" id="contact">
+    <div class="section__header">
+        <p class="eyebrow">Work with us</p>
+        <h2>Tell us what you want to launch.</h2>
+    </div>
+    <div class="card card--contact">
+        <p>Email</p>
+        <a href="mailto:hello@specc.studio">hello@specc.studio</a>
+        <p>Call</p>
+        <a href="tel:+15551234567">+1 (555) 123-4567</a>
+        <p>Calendly</p>
+        <a href="https://cal.com/" target="_blank" rel="noreferrer">Book a 20-min chat →</a>
+    </div>
+</section>
+{% endblock %}

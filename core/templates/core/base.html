@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Specc — Digital Studio{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body id="top">
+    <div class="background-glow" aria-hidden="true"></div>
+    <div class="page">
+        <header class="site-header">
+            <div class="header-container">
+                <a class="brand" href="{% url 'core:home' %}#top" aria-label="Specc home">
+                    <span class="brand-mark">Specc</span>
+                    <span class="brand-text">Studio</span>
+                </a>
+                <div class="nav-group">
+                    <nav class="nav-links" aria-label="Primary">
+                        <a href="{% url 'core:home' %}#services">Services</a>
+                        <a href="{% url 'core:home' %}#work">Work</a>
+                        <a href="{% url 'core:home' %}#contact">Contact</a>
+                    </nav>
+                    <div class="nav-actions">
+                        {% if user.is_authenticated %}
+                            <span class="nav-user">Hi, {{ user.first_name|default:user.username }}</span>
+                            <a class="btn btn--ghost nav-auth" href="{% url 'accounts:logout' %}">Logout</a>
+                        {% else %}
+                            <a class="nav-link nav-auth" href="{% url 'accounts:login' %}">Login</a>
+                            {% if request.resolver_match and request.resolver_match.url_name == 'login' %}
+                                <a class="btn btn--primary nav-auth" href="{% url 'accounts:signup' %}">Sign up</a>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="site-footer">
+            <p>© {{ current_year|default:2025 }} Specc Studio.</p>
+            <div>
+                <a href="https://instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+                <a href="https://dribbble.com/" target="_blank" rel="noreferrer">Dribbble</a>
+                <a href="mailto:hello@specc.studio">Contact</a>
+            </div>
+        </footer>
+    </div>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>
