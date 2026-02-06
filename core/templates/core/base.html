@@ -4,14 +4,56 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="{% block meta_description %}Specc is a web development studio building simple, fast, and thoughtful sites. We specialize in Next.js, Django, and Shopify with a focus on performance and accessibility.{% endblock %}" />
+    <meta name="keywords" content="web development, digital studio, Next.js, Django, Shopify, web design, full-stack development, SEO optimization" />
+    <meta name="author" content="Specc Studio" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://specc.ca/" />
+    <meta property="og:title" content="{% block og_title %}Specc — Digital Studio{% endblock %}" />
+    <meta property="og:description" content="{% block og_description %}Simple, fast, thoughtful sites for teams that need momentum. Web development agency focused on honest collaboration and clean execution.{% endblock %}" />
+    <meta property="og:image" content="{% block og_image %}https://specc.ca/static/core/images/og-image.jpg{% endblock %}" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://specc.ca/" />
+    <meta property="twitter:title" content="{% block twitter_title %}Specc — Digital Studio{% endblock %}" />
+    <meta property="twitter:description" content="{% block twitter_description %}Simple, fast, thoughtful sites for teams that need momentum.{% endblock %}" />
+    <meta property="twitter:image" content="{% block twitter_image %}https://specc.ca/static/core/images/og-image.jpg{% endblock %}" />
+    
     <title>{% block title %}Specc — Digital Studio{% endblock %}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{% static 'core/images/favicon.svg' %}" />
+    <link rel="alternate icon" href="{% static 'core/images/favicon.ico' %}" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="{% static 'core/css/home.css' %}" as="style">
+    
     <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
     {% block extra_head %}{% endblock %}
+    
+    <!-- Analytics placeholder - Add your analytics code here -->
+    {% if not debug %}
+    <!-- Google Analytics, Plausible, or other analytics -->
+    {% comment %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    {% endcomment %}
+    {% endif %}
 </head>
 <body id="top">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
     <div class="background-glow" aria-hidden="true"></div>
     <div class="page">
         <header class="site-header">
@@ -24,6 +66,7 @@
                     <nav class="nav-links" aria-label="Primary">
                         <a href="{% url 'core:home' %}#services">Services</a>
                         <a href="{% url 'core:home' %}#work">Work</a>
+                        <a href="{% url 'core:home' %}#testimonials">Testimonials</a>
                         <a href="{% url 'core:home' %}#contact">Contact</a>
                     </nav>
                     <div class="nav-actions">
@@ -41,19 +84,46 @@
             </div>
         </header>
 
-        <main>
+        <main id="main-content">
             {% block content %}{% endblock %}
         </main>
 
         <footer class="site-footer">
-            <p>© {{ current_year|default:2025 }} Specc Studio.</p>
-            <div>
-                <a href="https://instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
-                <a href="https://dribbble.com/" target="_blank" rel="noreferrer">Dribbble</a>
-                <a href="mailto:hello@specc.studio">Contact</a>
-            </div>
+            <p>© {{ current_year|default:2026 }} Specc Studio. All rights reserved.</p>
+            <nav aria-label="Footer">
+                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit us on Instagram">Instagram</a>
+                <a href="https://dribbble.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit us on Dribbble">Dribbble</a>
+                <a href="mailto:hello@specc.studio" aria-label="Send us an email">Contact</a>
+            </nav>
         </footer>
     </div>
     {% block extra_scripts %}{% endblock %}
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Specc Studio",
+      "description": "Web development studio building simple, fast, and thoughtful sites",
+      "url": "https://specc.ca",
+      "logo": "https://specc.ca/static/core/images/logo.png",
+      "email": "hello@specc.studio",
+      "telephone": "+1-555-123-4567",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CA"
+      },
+      "sameAs": [
+        "https://instagram.com/",
+        "https://dribbble.com/"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@specc.studio",
+        "contactType": "Customer Service"
+      }
+    }
+    </script>
 </body>
 </html>
